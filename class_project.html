@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Javascript Project</h1>
+    <form onsubmit="input(event)">
+        <label> ID: <input type="text" id="id" name="id"></label>
+        <button type="submit">Click Me</button>
+        <p id="result"></p>
+    </form>
+
+    <script>
+        let student = [
+            {id: 1, name: "shahzaib"},
+            {id: 2, name: "ali"},
+            {id: 3, name: "omar"},
+            {id: 4, name: "riswan"},
+            {id: 5, name: "farooq"},
+            {id: 6, name: "arfan"},
+            {id: 7, name: "kamran"},
+            {id: 8, name: "sabor"},
+            {id: 9, name: "hidayat"},
+            {id: 10, name: "ibadullah"}
+        ];
+
+        function input(event) {
+            event.preventDefault(); // Prevent form from submitting and refreshing the page
+
+            let input = document.getElementById("id");
+            let inputed=parseInt(input.value)
+            let result = document.getElementById("result");
+            let find = false;
+
+            for (let i = 0; i < student.length; i++) {
+                if (inputed === student[i].id) {
+                    // Show result if id found
+                    result.innerHTML = "Id  :   "+student[i].id +  "<br>"+"<br>"  + "Name   :"+student[i].name.toLocaleUpperCase();
+                    find = true;
+                    break;
+                }
+            }
+
+            // If no match is found
+            if (!find) {
+                result.textContent = "Not found";
+            }
+        }
+    </script>
+</body>
+</html>
